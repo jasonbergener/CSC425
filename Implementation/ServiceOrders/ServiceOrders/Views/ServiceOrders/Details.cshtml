@@ -1,0 +1,67 @@
+﻿@model ServiceOrders.Models.ServiceOrder
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <h4>ServiceOrder</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Opened)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Opened)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Updated)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Updated)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PhysicalAddress)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PhysicalAddress)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Requested)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Requested)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Notes)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Notes)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Customer.CustomerId)
+            </dd>
+        </dl>
+    </div>
+    <div class="col-md-4">
+        <a asp-action="Edit" asp-route-id="@Model.ServiceOrderID">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+    <div class="col-md-6 col-md-offset-2">
+        <iframe width="600" height="450" frameborder="0" style="border:0"
+                src="@("https://www.google.com/maps/embed/v1/place?q=" + Model.PhysicalAddress + "Current%20Location&key=AIzaSyCH3K9s70g3XObgyBmlUs1z8f50vVdEhNU")" allowfullscreen>
+        </iframe>
+    </div>
+</div>

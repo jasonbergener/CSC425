@@ -1,0 +1,12 @@
+C:\Users\Jason\Documents\Visual Studio 2017\Projects\ServiceOrders\ServiceOrders\bin\Debug\netcoreapp2.0\ServiceOrders.deps.json
+C:\Users\Jason\Documents\Visual Studio 2017\Projects\ServiceOrders\ServiceOrders\bin\Debug\netcoreapp2.0\ServiceOrders.runtimeconfig.json
+C:\Users\Jason\Documents\Visual Studio 2017\Projects\ServiceOrders\ServiceOrders\bin\Debug\netcoreapp2.0\ServiceOrders.runtimeconfig.dev.json
+C:\Users\Jason\Documents\Visual Studio 2017\Projects\ServiceOrders\ServiceOrders\bin\Debug\netcoreapp2.0\ServiceOrders.dll
+C:\Users\Jason\Documents\Visual Studio 2017\Projects\ServiceOrders\ServiceOrders\bin\Debug\netcoreapp2.0\ServiceOrders.pdb
+C:\Users\Jason\Documents\Visual Studio 2017\Projects\ServiceOrders\ServiceOrders\obj\Debug\netcoreapp2.0\ServiceOrders.csprojResolveAssemblyReference.cache
+C:\Users\Jason\Documents\Visual Studio 2017\Projects\ServiceOrders\ServiceOrders\obj\Debug\netcoreapp2.0\ServiceOrders.csproj.CoreCompileInputs.cache
+C:\Users\Jason\Documents\Visual Studio 2017\Projects\ServiceOrders\ServiceOrders\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\Jason\Documents\Visual Studio 2017\Projects\ServiceOrders\ServiceOrders\obj\Debug\netcoreapp2.0\ServiceOrders.AssemblyInfoInputs.cache
+C:\Users\Jason\Documents\Visual Studio 2017\Projects\ServiceOrders\ServiceOrders\obj\Debug\netcoreapp2.0\ServiceOrders.AssemblyInfo.cs
+C:\Users\Jason\Documents\Visual Studio 2017\Projects\ServiceOrders\ServiceOrders\obj\Debug\netcoreapp2.0\ServiceOrders.dll
+C:\Users\Jason\Documents\Visual Studio 2017\Projects\ServiceOrders\ServiceOrders\obj\Debug\netcoreapp2.0\ServiceOrders.pdb
