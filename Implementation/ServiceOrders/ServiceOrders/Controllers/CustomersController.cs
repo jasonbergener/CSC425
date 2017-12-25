@@ -20,13 +20,45 @@ namespace ServiceOrders.Controllers
         }
 
         // GET: Customers
-        public async Task<IActionResult> Index()
+        /*public async Task<IActionResult> Index()
         {
             return View(await _context.Customers.ToListAsync());
+        }*/
+        public async Task<IActionResult> Index(string sortOrder, string searchString)
+        {
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["EmailSortParm"] = sortOrder == "Email" ? "email_desc" : "Email";
+            ViewData["CurrentFilter"] = searchString;
+
+            var customers = from c in _context.Customers
+                            select c;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                customers = customers.Where(s => s.LastName.Contains(searchString)
+                               || s.FirstName.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    customers = customers.OrderByDescending(c => c.LastName);
+                    break;
+                case "Email":
+                    customers = customers.OrderBy(c => c.Email);
+                    break;
+                case "email_desc":
+                    customers = customers.OrderByDescending(c => c.Email);
+                    break;
+                default:
+                    customers = customers.OrderBy(c => c.LastName);
+                    break;
+            }
+            return View(await customers.AsNoTracking().ToListAsync());
         }
 
-        // GET: Customers/Details/5
-        public async Task<IActionResult> Details(int? id)
+
+            // GET: Customers/Details/5
+            public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -34,6 +66,8 @@ namespace ServiceOrders.Controllers
             }
 
             var customer = await _context.Customers
+                .Include(s => s.ServiceOrders)
+                .AsNoTracking()
                 .SingleOrDefaultAsync(m => m.CustomerId == id);
             if (customer == null)
             {
@@ -54,13 +88,22 @@ namespace ServiceOrders.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CustomerId,FirstName,LastName,Phone,Email,MailingAddress")] Customer customer)
+        public async Task<IActionResult> Create([Bind("FirstName,LastName,Phone,Email,MailingAddress")] Customer customer)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(customer);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _context.Add(customer);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            catch (DbUpdateException)
+            {
+                ModelState.AddModelError("", "Unable to save changes. " +
+                "Try again, and if the problem persists " +
+                "see your system administrator.");
             }
             return View(customer);
         }
