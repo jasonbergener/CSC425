@@ -48,7 +48,8 @@ namespace ServiceOrders.Controllers
         // GET: ServiceOrders/Create
         public IActionResult Create()
         {
-            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerId", "CustomerId");
+            //ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerId", "CustomerId");
+            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerId", "LastName");
             return View();
         }
 
@@ -65,7 +66,7 @@ namespace ServiceOrders.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerId", "CustomerId", serviceOrder.CustomerID);
+            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerId", "LastName", serviceOrder.CustomerID);
             return View(serviceOrder);
         }
 
@@ -82,7 +83,7 @@ namespace ServiceOrders.Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerId", "CustomerId", serviceOrder.CustomerID);
+            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerId", "LastName", serviceOrder.CustomerID);
             return View(serviceOrder);
         }
 
@@ -118,7 +119,7 @@ namespace ServiceOrders.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerId", "CustomerId", serviceOrder.CustomerID);
+            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerId", "LastName", serviceOrder.CustomerID);
             return View(serviceOrder);
         }
 
